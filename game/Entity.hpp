@@ -13,7 +13,7 @@ private:
 
 	/*=========================================================*/
 
-	// Graphics and Movement
+	// Graphics
 
 	std::vector<Texture2D> textureVector; // Texture for Entity.
 
@@ -22,11 +22,22 @@ private:
 
 	Color textureHue;
 
+	/*=========================================================*/
+
+	// Movement
+
 	std::pair<float, float> movementVector = { 0.f, 0.f }; // Gets added to coords every frame.
 	 
 	std::pair<float, float> coords; // Contains the X and Y cords. 
 
 	std::pair<float, float> defaultCoords; // Contains the X and Y cords. 
+
+	/*=========================================================*/
+
+	// Animation 
+
+	uint8_t framesPerSecond;
+	
 
 	/*=========================================================*/
 

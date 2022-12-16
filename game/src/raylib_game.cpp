@@ -48,7 +48,7 @@ int main() {
 
 	//loader.textureMap["Entity"];
 
-	Entity boo(WHITE);
+	Entity testentity(WHITE);
 
 	//Texture2D texture = LoadTexture("resources/logo.png");
 
