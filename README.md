@@ -1,6 +1,8 @@
 # Kepler ENGINE
 An engine for making games. For now, 2D only, but future versions will support 3D.
 
+![DALL·E 2022-12-16 18 05 46 - A mechanical gear with a purple starry background, pixel art](https://user-images.githubusercontent.com/99092565/208203357-bf3f9669-3841-4afd-b0f3-4b5a5721d86c.png)
+
 ## Important notes
 
 1. Uses Raylib. Get it however you wish, though a solution file is included for raylib as well. You may need to do some extra things to get it running. 
