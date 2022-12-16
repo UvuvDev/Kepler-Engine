@@ -1,4 +1,4 @@
-# Raylib Setup using Premake5
+# Kepler ENGINE
 An engine for making games. For now, 2D only, but future versions will support 3D.
 
 ## Important notes
