@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include "raylib.h"
 #include <memory>
+#include <unordered_map>
+#include <string>
 #include "BaseClass.hpp"
 
 
@@ -13,7 +15,10 @@ private:
 
 	// Graphics and Movement
 
-	std::shared_ptr<Texture2D> texture; // Texture for Entity.
+	std::vector<Texture2D> textureVector; // Texture for Entity.
+
+	std::unordered_map<std::string, std::shared_ptr<Texture2D>> textureMap;
+	std::unordered_map<std::string, std::shared_ptr<AudioCallback>> audioMap;
 
 	Color textureHue;
 
@@ -48,13 +53,13 @@ public:
 
 	// Constructors
 
-	Entity(std::shared_ptr<Texture2D> textureArg);
+	Entity();
 
-	Entity(std::shared_ptr<Texture2D> textureArg, Color textureHue);
+	Entity(Color textureHue);
 
-	Entity(std::shared_ptr<Texture2D> textureArg, std::pair<float, float> coordsArg);
+	Entity(std::pair<float, float> coordsArg);
 
-	Entity(std::shared_ptr<Texture2D> textureArg, Color textureHue, std::pair<float, float> coordsArg);
+	Entity(Color textureHue, std::pair<float, float> coordsArg);
 
 	/*=========================================================*/
 
@@ -71,6 +76,12 @@ public:
 	void setMovement(std::pair<float, float> moveVectorArg); // Sets Movement.
 
 	void setHealth(double healthArg); // Sets Health.
+
+	double getHealth(); // Gets Health.
+
+	void setDamage(double damageArg); // Sets Damage.
+
+	double getDamage(); // Gets Damage.
 
 	/*=========================================================*/
 

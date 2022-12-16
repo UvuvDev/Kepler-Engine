@@ -36,9 +36,7 @@ bool rip() {
 
 
 
-int main() {
-	
-	
+int main() {	
 
 	GraphicsEngine GraphicsEng( { GetScreenWidth(), GetScreenHeight() - 100 }, 60);
 	 
@@ -46,11 +44,11 @@ int main() {
 
 	Loader loader;
 
-	loader.load();
+	//loader.load();
 
-	loader.textureMap["Entity"];
+	//loader.textureMap["Entity"];
 
-	//Entity entityBoom(std::make_shared(LoadTexture("resources/Entity.png");
+	Entity boo(WHITE);
 
 	//Texture2D texture = LoadTexture("resources/logo.png");
 

@@ -8,6 +8,7 @@ bool updateAllClasses();
 
 
 class BaseClass {
+public:
 
 	/*
 	

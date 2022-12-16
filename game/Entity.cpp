@@ -5,13 +5,18 @@
 
 /*=========================================================*/
 
-	// Constructors
+// Constructors
 
-Entity::Entity(std::shared_ptr<Texture2D> textureArg) {
+Entity::Entity() {
 
-	texture = textureArg;
+	textureVector.emplace_back( LoadTexture("resources/KeplerEngineLogo.png") );
+
+	textureMap["Logo"] = std::make_shared<Texture2D>( textureVector[0] );
 
 	textureHue = WHITE;
+
+	damage = defaultDamage;
+	health = defaultHealth;
 
 	coords.X = 0;
 	coords.Y = 0;
@@ -21,39 +26,44 @@ Entity::Entity(std::shared_ptr<Texture2D> textureArg) {
 
 }
 
-Entity::Entity(std::shared_ptr<Texture2D> textureArg, Color textureHueArg) {
-
-	texture = textureArg;
+Entity::Entity(Color textureHueArg) {
 
 	textureHue = textureHueArg;
 
 	coords.X = 0;
 	coords.Y = 0;
 
+	damage = defaultDamage;
+	health = defaultHealth;
+
 	defaultCoords.X = 0;
 	defaultCoords.Y = 0;
 }
 
-Entity::Entity(std::shared_ptr<Texture2D> textureArg, std::pair<float, float> coordsArg) {
+Entity::Entity(std::pair<float, float> coordsArg) {
 
-	texture = textureArg;
+	textureHue = WHITE;
 
 	coords.X = coordsArg.X;
 	coords.Y = coordsArg.Y;
+
+	damage = defaultDamage;
+	health = defaultHealth;
 
 	defaultCoords.X = coordsArg.X;
 	defaultCoords.Y = coordsArg.Y;
 
 }
 
-Entity::Entity(std::shared_ptr<Texture2D> textureArg, Color textureHueArg, std::pair<float, float> coordsArg) {
-
-	texture = textureArg;
+Entity::Entity(Color textureHueArg, std::pair<float, float> coordsArg) {
 
 	textureHue = textureHueArg;
 
 	coords.X = coordsArg.X;
 	coords.Y = coordsArg.Y;
+
+	damage = defaultDamage;
+	health = defaultHealth;
 
 	defaultCoords.X = coordsArg.X;
 	defaultCoords.Y = coordsArg.Y;
@@ -66,7 +76,7 @@ Entity::Entity(std::shared_ptr<Texture2D> textureArg, Color textureHueArg, std::
 
 void Entity::update() { // Put every function you need to update in here
 	
-	DrawTexture(*texture, coords.X, coords.Y, WHITE);
+	DrawTexture(textureVector[0], coords.X, coords.Y, WHITE);
 
 }
 
@@ -82,11 +92,23 @@ void Entity::reset() { // Resets your Entities variables.
 // Class Functions
 
 void Entity::setMovement(std::pair<float, float> moveVectorArg) { // Sets Movement.
-
+	movementVector = moveVectorArg;
 }
 
 void Entity::setHealth(double healthArg) { // Sets Health.
+	health = healthArg;
+}
 
+double Entity::getHealth() {
+	return health;
+}
+
+void Entity::setDamage(double damageArg) {
+	damage = damageArg;
+}
+
+double Entity::getDamage() {
+	return damage;
 }
 
 /*=========================================================*/
