@@ -1,72 +1,78 @@
 #include "Entity.hpp"
 
-#define X first
-#define Y second
-
 /*=========================================================*/
 
 // Constructors
 
-Entity::Entity() {
+Entity::Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg) {
 
-	textureVector.emplace_back( LoadTexture("resources/KeplerEngineLogo.png") );
+	//textureVector.emplace_back( LoadTexture("resources/KeplerEngineLogo.png") );
 
-	textureMap["Logo"] = std::make_shared<Texture2D>( textureVector[0] );
-
-	textureHue = WHITE;
-
-	damage = defaultDamage;
-	health = defaultHealth;
-
-	coords.X = 0;
-	coords.Y = 0;
-
-	defaultCoords.X = 0;
-	defaultCoords.Y = 0;
-
-}
-
-Entity::Entity(Color textureHueArg) {
-
-	textureHue = textureHueArg;
-
-	coords.X = 0;
-	coords.Y = 0;
-
-	damage = defaultDamage;
-	health = defaultHealth;
-
-	defaultCoords.X = 0;
-	defaultCoords.Y = 0;
-}
-
-Entity::Entity(std::pair<float, float> coordsArg) {
+	textureMap = textureMapArg; //= std::make_shared<Texture2D>( textureVector[0] );
 
 	textureHue = WHITE;
 
-	coords.X = coordsArg.X;
-	coords.Y = coordsArg.Y;
-
 	damage = defaultDamage;
 	health = defaultHealth;
 
-	defaultCoords.X = coordsArg.X;
-	defaultCoords.Y = coordsArg.Y;
+	coords.x = 0;
+	coords.y = 0;
+
+	defaultCoords.x = 0;
+	defaultCoords.y = 0;
 
 }
 
-Entity::Entity(Color textureHueArg, std::pair<float, float> coordsArg) {
+Entity::Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg, 
+	Color textureHueArg) {
+
+	textureMap = textureMapArg;
 
 	textureHue = textureHueArg;
 
-	coords.X = coordsArg.X;
-	coords.Y = coordsArg.Y;
+	coords.x = 0;
+	coords.y = 0;
 
 	damage = defaultDamage;
 	health = defaultHealth;
 
-	defaultCoords.X = coordsArg.X;
-	defaultCoords.Y = coordsArg.Y;
+	defaultCoords.x = 0;
+	defaultCoords.y = 0;
+}
+
+Entity::Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg,
+	Vector2 coordsArg) {
+
+	textureMap = textureMapArg;
+
+	textureHue = WHITE;
+
+	coords.x = coordsArg.x;
+	coords.y = coordsArg.y;
+
+	damage = defaultDamage;
+	health = defaultHealth;
+
+	defaultCoords.x = coordsArg.x;
+	defaultCoords.y = coordsArg.y;
+
+}
+
+Entity::Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg, 
+	Color textureHueArg, Vector2 coordsArg) {
+
+	textureMap = textureMapArg;
+
+	textureHue = textureHueArg;
+
+	coords.x = coordsArg.x;
+	coords.y = coordsArg.y;
+
+	damage = defaultDamage;
+	health = defaultHealth;
+
+	defaultCoords.x = coordsArg.x;
+	defaultCoords.y = coordsArg.y;
 
 }
 
@@ -76,14 +82,15 @@ Entity::Entity(Color textureHueArg, std::pair<float, float> coordsArg) {
 
 void Entity::update() { // Put every function you need to update in here
 	
-	DrawTexture(textureVector[0], coords.X, coords.Y, WHITE);
+	DrawTexture(testTexture, coords.x, coords.y, WHITE);
+	//DrawTexture(textureMap->find("Entity"), coords.x, coords.y, WHITE);
 
 }
 
 void Entity::reset() { // Resets your Entities variables.
 	
-	coords.X = defaultCoords.X;
-	coords.Y = defaultCoords.Y;
+	coords.x = defaultCoords.x;
+	coords.y = defaultCoords.y;
 
 }
 
@@ -91,7 +98,7 @@ void Entity::reset() { // Resets your Entities variables.
 
 // Class Functions
 
-void Entity::setMovement(std::pair<float, float> moveVectorArg) { // Sets Movement.
+void Entity::setMovement(Vector2 moveVectorArg) { // Sets Movement.
 	movementVector = moveVectorArg;
 }
 
@@ -115,5 +122,5 @@ double Entity::getDamage() {
 
 
 
-#undef X
-#undef Y
+#undef x
+#undef y

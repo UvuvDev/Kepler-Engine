@@ -207,6 +207,7 @@
 
 #if !defined(RAYGUI_STANDALONE)
 #include "raylib.h"
+#include <iostream>
 #endif
 
 // Function specifiers in case library is build/used as a shared library (Windows)
@@ -1703,9 +1704,13 @@ bool GuiButton(Rectangle bounds, const char* text)
 
     // Update control
     //--------------------------------------------------------------------
+
     if ((state != STATE_DISABLED) && !guiLocked)
     {
         Vector2 mousePoint = GetMousePosition();
+
+        std::cout << "Mouse Point   X: " << mousePoint.x << "   Mouse Point Y: " << mousePoint.y << std::endl;
+        std::cout << "Bounds X: " << bounds.x << "   Bounds Y: " << bounds.y << std::endl;
 
         // Check button state
         if (CheckCollisionPointRec(mousePoint, bounds))
@@ -1726,7 +1731,7 @@ bool GuiButton(Rectangle bounds, const char* text)
     if (state == STATE_FOCUSED) GuiTooltip(bounds);
     //------------------------------------------------------------------
 
-    return pressed;
+    return pressed; 
 }
 
 // Label button control
@@ -4107,13 +4112,13 @@ static void GuiTooltip(Rectangle controlRec)
 
         if ((controlRec.x + textSize.x + 16) > GetScreenWidth()) controlRec.x -= (textSize.x + 16 - controlRec.width);
 
-        GuiPanel((Rectangle) { controlRec.x, controlRec.y + controlRec.height + 4, textSize.x + 16, GuiGetStyle(DEFAULT, TEXT_SIZE) + 8 }, NULL);
+        GuiPanel( { controlRec.x, controlRec.y + controlRec.height + 4, textSize.x + 16, static_cast<float>(GuiGetStyle(DEFAULT, TEXT_SIZE)) + 8 }, NULL);
 
         int textPadding = GuiGetStyle(LABEL, TEXT_PADDING);
         int textAlignment = GuiGetStyle(LABEL, TEXT_ALIGNMENT);
         GuiSetStyle(LABEL, TEXT_PADDING, 0);
         GuiSetStyle(LABEL, TEXT_ALIGNMENT, TEXT_ALIGN_CENTER);
-        GuiLabel((Rectangle) { controlRec.x, controlRec.y + controlRec.height + 4, textSize.x + 16, GuiGetStyle(DEFAULT, TEXT_SIZE) + 8 }, guiTooltipPtr);
+        GuiLabel( { controlRec.x, controlRec.y + controlRec.height + 4, textSize.x + 16, static_cast<float>(GuiGetStyle(DEFAULT, TEXT_SIZE)) + 8 }, guiTooltipPtr);
         GuiSetStyle(LABEL, TEXT_ALIGNMENT, textAlignment);
         GuiSetStyle(LABEL, TEXT_PADDING, textPadding);
     }

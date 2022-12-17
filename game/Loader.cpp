@@ -1,7 +1,10 @@
 #include "Loading.hpp"
+#include "Entity.hpp"
 
 
 bool Loader::load() {
+
+	DrawFPS(100, 100);
 
 	progressLoading = 0;
 
@@ -9,7 +12,35 @@ bool Loader::load() {
 
 	// Add all Textures Here.
 
-	textureMap["Entity"] = std::make_shared<Texture2D>(EntityTexture);
+	BeginDrawing();
+
+	ClearBackground(BLACK);
+
+	
+
+	textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	textureMap["Entity"] = std::make_shared<Texture2D>(LoadTexture("resources/KeplerEngineLogo.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+
+	DrawTexture(*textureMap["LoadingScreen"], 600, 200, WHITE);
+
+
+
+	EndDrawing();
+
+	WaitTime(.5);
 
 	/*======================================================*/
 

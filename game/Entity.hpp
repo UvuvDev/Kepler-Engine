@@ -6,18 +6,20 @@
 #include <string>
 #include "BaseClass.hpp"
 
-
+using HashmapShPtr = std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >>;
 
 class Entity : BaseClass {
-private:
+protected:
 
 	/*=========================================================*/
 
 	// Graphics
 
+	Texture2D testTexture = LoadTexture("resources/testspritesheet.png");
+
 	std::vector<Texture2D> textureVector; // Texture for Entity.
 
-	std::unordered_map<std::string, std::shared_ptr<Texture2D>> textureMap;
+	HashmapShPtr textureMap;
 	std::unordered_map<std::string, std::shared_ptr<AudioCallback>> audioMap;
 
 	Color textureHue;
@@ -26,18 +28,16 @@ private:
 
 	// Movement
 
-	std::pair<float, float> movementVector = { 0.f, 0.f }; // Gets added to coords every frame.
+	Vector2 movementVector = { 0.f, 0.f }; // Gets added to coords every frame.
 	 
-	std::pair<float, float> coords; // Contains the X and Y cords. 
+	Vector2 coords; // Contains the x and y cords. 
 
-	std::pair<float, float> defaultCoords; // Contains the X and Y cords. 
+	Vector2 defaultCoords; // Contains the x and y cords. 
 
 	/*=========================================================*/
 
 	// Animation 
 
-	uint8_t framesPerSecond;
-	
 
 	/*=========================================================*/
 
@@ -59,18 +59,22 @@ public:
 	bool hasCollision = false;
 	bool isDead = false;
 	bool canMove = false;
+	bool isAffectedByGravity = false;
 
 	/*=========================================================*/
 
 	// Constructors
 
-	Entity();
+	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg);
 
-	Entity(Color textureHue);
+	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg, 
+		Color textureHue);
 
-	Entity(std::pair<float, float> coordsArg);
+	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg, 
+		Vector2 coordsArg);
 
-	Entity(Color textureHue, std::pair<float, float> coordsArg);
+	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg, 
+		Color textureHue, Vector2 coordsArg);
 
 	/*=========================================================*/
 
@@ -84,7 +88,7 @@ public:
 
 	// Class Functions
 
-	void setMovement(std::pair<float, float> moveVectorArg); // Sets Movement.
+	void setMovement(Vector2 moveVectorArg); // Sets Movement.
 
 	void setHealth(double healthArg); // Sets Health.
 

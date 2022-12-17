@@ -1,3 +1,3 @@
 #pragma once
 
-const char* GUIName = "Gaem.";
+const char* GUIName = "Kepler Engine ";

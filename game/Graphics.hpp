@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include <iostream>
 #include <utility>
 
 class GraphicsEngine {
@@ -9,8 +10,9 @@ private:
 
 	bool isPaused;
 
-	uint16_t targetFPS;
+	bool showFPS;
 
+	uint16_t targetFPS;
 
 public:
 
@@ -26,8 +28,9 @@ public:
 
 	bool fullscreen();
 
+	void makeButton(float xcord, float ycord);
 
-
+	void goToLink(char* link);
 
 
 };

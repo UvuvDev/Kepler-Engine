@@ -21,13 +21,10 @@ public:
 class Loader : BaseLoader {
 private:
 
-	Texture2D EntityTexture = LoadTexture("resources/Entity.png");
 	
 public:
 
-	bool load();
-
-	
+	bool load();	
 
 	std::unordered_map<std::string, std::shared_ptr<Texture2D>> textureMap;
 	std::unordered_map<std::string, std::shared_ptr<Music>> musicMap;

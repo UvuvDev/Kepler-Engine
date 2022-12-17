@@ -1,6 +1,6 @@
 #pragma once
 
-enum GrandPasserTag {
+enum class GrandPasserTag {
 
 	Graphics = 0,
 	Level = 1,
