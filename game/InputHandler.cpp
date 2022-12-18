@@ -13,3 +13,4 @@ void InputHandlerClass::update() {
 	mousePos = GetMousePosition();
 
 }
+

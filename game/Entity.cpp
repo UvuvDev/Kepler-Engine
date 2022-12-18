@@ -4,6 +4,23 @@
 
 // Constructors
 
+Entity::Entity() {
+
+	textureHue = WHITE;
+
+	damage = defaultDamage;
+	health = defaultHealth;
+
+	coords.x = 0;
+	coords.y = 0;
+
+	defaultCoords.x = 0;
+	defaultCoords.y = 0;
+
+	isFlipped = 1;
+
+}
+
 Entity::Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg) {
 
 	//textureVector.emplace_back( LoadTexture("resources/KeplerEngineLogo.png") );
@@ -82,8 +99,8 @@ Entity::Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<
 
 void Entity::update() { // Put every function you need to update in here
 	
-	DrawTexture(testTexture, coords.x, coords.y, WHITE);
-	//DrawTexture(textureMap->find("Entity"), coords.x, coords.y, WHITE);
+	//DrawTexture(testTexture, coords.x, coords.y, WHITE);
+	DrawTexture( *(*textureMap->find("Entity")).second , coords.x, coords.y, WHITE);
 
 }
 
@@ -120,7 +137,12 @@ double Entity::getDamage() {
 
 /*=========================================================*/
 
+void Entity::flipSpriteForward() {
+	isFlipped = 1;
+}
 
+void Entity::flipSpriteReverse() {
+	isFlipped = -1;
+}
 
-#undef x
-#undef y
+/*=========================================================*/

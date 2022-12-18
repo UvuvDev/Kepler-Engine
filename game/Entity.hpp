@@ -24,6 +24,8 @@ protected:
 
 	Color textureHue;
 
+	float isFlipped;
+
 	/*=========================================================*/
 
 	// Movement
@@ -49,6 +51,9 @@ protected:
 	double health;
 	double damage;	
 
+	float timeInAir = 0.f;
+	float startTimeInAir = 0.f;
+
 public: 
 
 	/*=========================================================*/
@@ -60,10 +65,14 @@ public:
 	bool isDead = false;
 	bool canMove = false;
 	bool isAffectedByGravity = false;
+	bool isInAir = false;
+	
 
 	/*=========================================================*/
 
 	// Constructors
+
+	Entity();
 
 	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg);
 
@@ -100,7 +109,9 @@ public:
 
 	/*=========================================================*/
 
+	void flipSpriteForward();
 
+	void flipSpriteReverse();
 
 };
 

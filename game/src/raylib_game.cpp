@@ -52,7 +52,7 @@ int main() {
 
 	//Entity testentity( std::make_shared<std::unordered_map<std::string, std::shared_ptr<Texture2D>>>(loader.textureMap) );
 
-	Character playerCharacter;
+	Character playerCharacter(std::make_shared<std::unordered_map<std::string, std::shared_ptr<Texture2D>>>(loader.textureMap));
 
 	//Texture2D texture = LoadTexture("resources/logo.png");
 

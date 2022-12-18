@@ -40,17 +40,18 @@ bool GraphicsEngine::initCustomWindow() {
 }
 
 
+
 bool GraphicsEngine::mainRenderLoop() {
 
 	BeginDrawing();
 
-	ClearBackground(RED);
+	ClearBackground(WHITE);
 
 	if (showFPS == true) {
 		DrawFPS(300, 300);
 	}
-
-	makeButton(500, 5000);
+	
+	makeButton(500, 500);
 
 	EndDrawing();
 
