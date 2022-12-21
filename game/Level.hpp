@@ -14,6 +14,8 @@ public:
 
 	void reset();
 
+	std::vector<Rectangle> coordsToCheckCollision(Vector2 coords);
+
 
 
 };

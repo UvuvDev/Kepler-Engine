@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseClass.hpp"
 #include "raylib.h"
+#include <memory>
 
 class Platforms : BaseClass {
 private:
@@ -32,6 +33,8 @@ public:
 	void makeNewPlatform(Vector2 location, Vector2 dimensions, uint16_t amountToMake);
 
 	void removePlatform(uint32_t index);
+
+	std::shared_ptr<std::vector<Rectangle>> getPlatformVector();
 
 
 

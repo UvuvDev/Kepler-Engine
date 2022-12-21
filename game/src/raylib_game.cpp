@@ -51,18 +51,16 @@ int main() {
 
 	//Texture2D texture = LoadTexture("resources/logo.png");
 
-	//std::cout << GetMonitorHeight(0); // Haha getMonitorHeight returns only memory address <3 Fix in graphics.cpp
+	std::cout << "GRIOGJRWEOIGJERIOGJERIGOREJGOIERJGRWEOIGJREO"; // Haha getMonitorHeight returns only memory address <3 Fix in graphics.cpp
 
-	level.platforms.makeNewPlatform({ 100, 100 }, { 100, 100 });
+	level.platforms.makeNewPlatform({ 100, 100 }, { 100, 200 });
 
 	while ( !WindowShouldClose() ) {
 
 		GraphicsEng.mainRenderLoop();
 
 		playerCharacter.update();
-
 		
-
 		level.update();
 
 		std::cout << "\n\n";

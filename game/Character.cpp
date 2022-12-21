@@ -249,6 +249,12 @@ void Character::jumpingCheck() {
 
 bool Character::collisionCheck() {
 
+	std::vector<Rectangle> collisionBoxesToCheck;
+
+	collisionBoxesToCheck = levelPtr->coordsToCheckCollision({ 100, 100 });
+
+	std::cout << collisionBoxesToCheck.at(0).x;
+
 	collisionBox.x = coords.x;
 	collisionBox.y = coords.y;
 
@@ -257,24 +263,18 @@ bool Character::collisionCheck() {
 
 	DrawRectangleLines(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height, RED);
 	DrawRectangleLines(debugBox.x, debugBox.y, debugBox.width, debugBox.height, BLUE);
-	
-	
-	if (CheckCollisionRecs(collisionBox, debugBox)) {
-		DrawTexture(*(*textureMap->find("Checkmark")).second, 150, 100, WHITE);
+
+	for (int i = 0; i < collisionBoxesToCheck.size(); i++) {
+
+		// if coords > 0 + width and < Screen width, collision check. else dont emplace back		
+
+		if (CheckCollisionRecs(collisionBox, collisionBoxesToCheck.at(i))) {
+			DrawTexture(*(*textureMap->find("Checkmark")).second, 150, 100, WHITE);
+			return true;
+		}
 
 	}
 
-
-
-
-
-	if (CheckCollisionRecs(collisionBox, {100, 100, 1000, 1000})) {
-		//DrawTexture(*(*textureMap->find("Character")).second, 100, 100, WHITE);
-		//std::cout << "RIEOVJWIOFJWIOFJEWIOFJEWQIOPFJIE";
-		return true;
-	}
-	else {
-		return false;
-	}
+	return false;
 
 }

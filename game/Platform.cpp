@@ -1,4 +1,5 @@
 #include "Platform.hpp"
+#include <iostream>
 
 
 Platforms::Platforms() {
@@ -51,6 +52,8 @@ void Platforms::makeNewPlatform(Vector2 location) {
 	Rectangle tempRec = { location.x, location.y, defaultWidth, defaultHeight };
 
 	platformVector.emplace_back(tempRec);
+
+	std::cout << "NEW PLATFORM!!!!!!!!";
 
 }
 
