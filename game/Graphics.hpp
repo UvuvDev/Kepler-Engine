@@ -7,6 +7,8 @@
 class GraphicsEngine {
 private:
 
+	Rectangle screenToRender;
+
 	int screenHeight, screenWidth;
 
 	bool isPaused;
@@ -17,9 +19,9 @@ private:
 
 public:
 
-	GraphicsEngine(std::pair<uint16_t, uint16_t> dimensions); // X is width, Y is height
+	GraphicsEngine(Vector2 dimensions); // X is width, Y is height
 
-	GraphicsEngine(std::pair <uint16_t, uint16_t> dimensions, uint16_t targetFPSArg);
+	GraphicsEngine(Vector2 dimensions, uint16_t targetFPSArg);
 
 	bool initCustomWindow();
 

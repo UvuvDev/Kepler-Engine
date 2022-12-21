@@ -21,7 +21,7 @@ bool Loader::load() {
 	textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
 	textureMap["Character"] = std::make_shared<Texture2D>(LoadTexture("resources/testspritesheet.png"));
 	textureMap["Logo"] = std::make_shared<Texture2D>(LoadTexture("resources/KeplerEngineLogo.png"));
-	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
+	textureMap["Checkmark"] = std::make_shared<Texture2D>(LoadTexture("resources/checkmark.png"));
 	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
 	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));
 	//textureMap["LoadingScreen"] = std::make_shared<Texture2D>(LoadTexture("resources/loadingscreen.png"));

@@ -7,24 +7,34 @@
 #undef RAYGUI_IMPLEMENTATION
 
 
-GraphicsEngine::GraphicsEngine(std::pair <uint16_t, uint16_t> dimensions) {
+GraphicsEngine::GraphicsEngine(Vector2 dimensions) {
 
-	screenWidth = dimensions.first;
-	screenHeight = dimensions.second;
+	screenWidth = dimensions.x;
+	screenHeight = dimensions.y;
+
 	isPaused = false;
 	showFPS = true;
 	targetFPS = 60;
 
+	screenToRender.width = dimensions.x;
+	screenToRender.height = dimensions.y;
+
+
 }
 
 
-GraphicsEngine::GraphicsEngine(std::pair <uint16_t, uint16_t> dimensions, uint16_t targetFPSArg) {
+GraphicsEngine::GraphicsEngine(Vector2 dimensions, uint16_t targetFPSArg) {
 
-	screenWidth = dimensions.first;
-	screenHeight = dimensions.second;
+	screenWidth = dimensions.x;
+	screenHeight = dimensions.y;
+
 	isPaused = false;
 	showFPS = true;
 	targetFPS = targetFPSArg;
+
+	screenToRender.width = dimensions.x;
+	screenToRender.height = dimensions.y;
+
 
 }
 
@@ -48,7 +58,7 @@ bool GraphicsEngine::mainRenderLoop() {
 	ClearBackground(WHITE);
 
 	if (showFPS == true) {
-		DrawFPS(300, 300);
+		DrawFPS(50, 50);
 	}
 	
 	makeButton(500, 500);

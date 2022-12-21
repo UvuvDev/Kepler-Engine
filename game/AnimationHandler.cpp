@@ -3,10 +3,12 @@
 
 
 AnimationHandlerClass::AnimationHandlerClass() {
-	framesPerSecond = 12;
+	
+	framesPerSecond = 1;
 	pixelDensityPerChunk = 64;
 	chunksPerSheet = { 4, 5 };
 	currentChunk = { 0, 0 };
+	directionsToFlow = { 0, 1 };
 
 	timeStuff = 0;
 
@@ -25,24 +27,28 @@ AnimationHandlerClass::AnimationHandlerClass(std::string textureMapKeys) {
 	pixelDensityPerChunk = 64;
 	chunksPerSheet = { 4, 5 };
 	currentChunk = { 0, 0 };
+	directionsToFlow = { 0, 1 };
+
+	shouldUpdate = false;
 
 }
 
 void AnimationHandlerClass::update() {		
 
 	if (shouldUpdate == true) {
+
 		if (currentChunk.x > chunksPerSheet.x * pixelDensityPerChunk) {
 			currentChunk.x = 0.f;
 		}
 		else {
-			currentChunk.x += 0.f;
+			currentChunk.x += directionsToFlow.x * pixelDensityPerChunk;
 		}
 
 		if (currentChunk.y > chunksPerSheet.y * pixelDensityPerChunk) {
 			currentChunk.y = 0.f;
 		}
 		else {
-			currentChunk.y += pixelDensityPerChunk;
+			currentChunk.y += directionsToFlow.y * pixelDensityPerChunk;
 		}
 	}
 
@@ -56,12 +62,7 @@ void AnimationHandlerClass::update() {
 		"Amount of X Chunks: " << chunksPerSheet.y <<
 		" Amount of Y Chunks: " << chunksPerSheet.y << "\n\n"; */
 
-
-
-	
-
-
-	if (timeStuff > 30) {
+	if (std::round( GetTime() ) / framesPerSecond > GetTime() / framesPerSecond) {
 		shouldUpdate = true;
 		timeStuff = 0;
 	}
@@ -100,4 +101,13 @@ void AnimationHandlerClass::freezeFrame(Vector2 frameToFreezeOn) {
 	shouldUpdate = false;
 
 	currentChunk = frameToFreezeOn;
+
+}
+
+void AnimationHandlerClass::setCurrentChunk(Vector2 newChunkArg) {
+	currentChunk = newChunkArg;
+}
+
+void AnimationHandlerClass::setChunkMovement(Vector2 newDirectionsToFlow) {
+	directionsToFlow = newDirectionsToFlow;
 }

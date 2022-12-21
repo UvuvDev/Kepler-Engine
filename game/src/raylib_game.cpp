@@ -18,23 +18,15 @@
 #include "Tag.hpp"
 #include "Entity.hpp"
 #include "Loading.hpp"
+#include "Level.hpp"
 #include "AnimationHandler.hpp"
 #include "Character.hpp"
+#include "Platform.hpp"
 
 #include <memory>
 #include <iostream>
 
-int test1 = 0; 
 
-bool rip() {
-
-	std::cout << "UWU\n";
-
-	test1++;
-
-	return true;
-
-}
 
 
 
@@ -52,13 +44,16 @@ int main() {
 
 	//Entity testentity( std::make_shared<std::unordered_map<std::string, std::shared_ptr<Texture2D>>>(loader.textureMap) );
 
-	Character playerCharacter(std::make_shared<std::unordered_map<std::string, std::shared_ptr<Texture2D>>>(loader.textureMap));
+	Level level;
+
+	Character playerCharacter(std::make_shared<std::unordered_map<std::string, std::shared_ptr<Texture2D>>>(loader.textureMap),
+		std::make_shared<Level>(level));
 
 	//Texture2D texture = LoadTexture("resources/logo.png");
 
 	//std::cout << GetMonitorHeight(0); // Haha getMonitorHeight returns only memory address <3 Fix in graphics.cpp
 
-	//GraphicsEng.fullscreen();
+	level.platforms.makeNewPlatform({ 100, 100 }, { 100, 100 });
 
 	while ( !WindowShouldClose() ) {
 
@@ -66,7 +61,11 @@ int main() {
 
 		playerCharacter.update();
 
-		std::cout << test1 << "\n";
+		
+
+		level.update();
+
+		std::cout << "\n\n";
 
 	}
 	

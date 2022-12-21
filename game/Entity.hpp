@@ -17,8 +17,6 @@ protected:
 
 	Texture2D testTexture = LoadTexture("resources/testspritesheet.png");
 
-	std::vector<Texture2D> textureVector; // Texture for Entity.
-
 	HashmapShPtr textureMap;
 	std::unordered_map<std::string, std::shared_ptr<AudioCallback>> audioMap;
 
@@ -51,7 +49,7 @@ protected:
 	double health;
 	double damage;	
 
-	float timeInAir = 0.f;
+	float currentTime = 0.f;
 	float startTimeInAir = 0.f;
 
 public: 
@@ -66,6 +64,7 @@ public:
 	bool canMove = false;
 	bool isAffectedByGravity = false;
 	bool isInAir = false;
+	bool shouldRender = true;
 	
 
 	/*=========================================================*/

@@ -24,6 +24,8 @@ private:
 
 	Vector2 currentChunk;
 
+	Vector2 directionsToFlow;
+
 public:
 
 	Texture2D testTexture = LoadTexture("resources/testspritesheet.png");
@@ -47,6 +49,10 @@ public:
 	Vector2 getCurrentChunk();
 
 	int getPixelDensityPerChunk();
+
+	void setCurrentChunk(Vector2 newchunk);
+
+	void setChunkMovement(Vector2 newDirectionsToFlow);
 
 
 
