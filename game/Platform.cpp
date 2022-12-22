@@ -34,8 +34,7 @@ void Platforms::update() {
 	for (int i = 0; i < platformVector.size(); i++) {
 		DrawRectangle(platformVector[i].x, platformVector[i].y, platformVector[i].width,
 			platformVector[i].height, RED);
-	}
-	
+	}	
 
 }
 
