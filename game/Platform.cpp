@@ -10,6 +10,9 @@ Platforms::Platforms() {
 	coords.x = 0;
 	coords.y = 0;
 
+	canMove = false;
+	hasCollision = true;
+
 }
 
 Platforms::Platforms(Rectangle recArg) {
@@ -33,7 +36,10 @@ void Platforms::update() {
 
 	for (int i = 0; i < platformVector.size(); i++) {
 		DrawRectangle(platformVector[i].x, platformVector[i].y, platformVector[i].width,
-			platformVector[i].height, RED);
+			platformVector[i].height, BLUE);
+		DrawRectangleLines(platformVector[i].x, platformVector[i].y, platformVector[i].width,
+			platformVector[i].height, BLACK);
+
 	}	
 
 }
@@ -58,12 +64,13 @@ void Platforms::makeNewPlatform(Vector2 location) {
 
 void Platforms::makeNewPlatform(Vector2 location, Vector2 dimensions) {
 
-	std::cout << "NEW PLATFORM!!!!!!!!";
+	std::cout << "\n\n" << platformVector.size() << "\n\n";
 	
-	Rectangle tempRec = { 100, 100, 100, 100 }; //  { location.x, location.y, dimensions.x, dimensions.y }
+	Rectangle tempRec = { location.x, location.y, dimensions.x, dimensions.y }; //  { location.x, location.y, dimensions.x, dimensions.y }
 
 	platformVector.emplace_back(tempRec);
 
+	std::cout << "\n\n" << platformVector[0].x << "\n\n";
 }
 
 void Platforms::makeNewPlatform(Vector2 location, Vector2 dimensions, uint16_t amountToMake) {
@@ -82,7 +89,7 @@ void Platforms::removePlatform(uint32_t index) {
 	//platformVector.empty(index);
 }
 
-std::shared_ptr<std::vector<Rectangle>> Platforms::getPlatformVector() {
-	return std::make_shared<std::vector<Rectangle>>(platformVector);
+const std::vector<Rectangle>& Platforms::getPlatformVector() {
+	return platformVector;
 
 }

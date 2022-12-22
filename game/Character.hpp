@@ -16,7 +16,7 @@ private:
 	CharacterStates characterStateMachine;
 	CollisionStates collisionState;
 
-	std::shared_ptr<Level> levelPtr;
+	Level* levelPtr;
 
 	void bottomFloor();
 
@@ -52,10 +52,10 @@ public:
 
 	Character();
 
-	Character(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg);
+	Character(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg);
 
-	Character::Character(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg,
-		std::shared_ptr<Level> level);
+	Character::Character(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg,
+		Level* levelPtrArg);
 
 	void update();
 

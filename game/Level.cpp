@@ -17,11 +17,10 @@ std::vector<Rectangle> Level::coordsToCheckCollision(Vector2 coords) {
 	
 	std::vector<Rectangle> returnCoordsForCollision;
 
-	for (int i = 0; i < platforms.getPlatformVector()->size(); i++) {
+	std::cout << "\nsize of platform vector: " << platforms.getPlatformVector().size() << "  ";
 
-		std::cout << "AAAaaa";
-
-		Rectangle throwaway = platforms.getPlatformVector()->at(0);
+	for (const Rectangle& throwaway : platforms.getPlatformVector()) {
+		std::cout << "\n\nAAAaaa\n\n";
 
 		returnCoordsForCollision.emplace_back(throwaway);
 

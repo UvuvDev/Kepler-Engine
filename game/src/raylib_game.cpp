@@ -25,12 +25,13 @@
 
 #include <memory>
 #include <iostream>
-
-
+#include <random>
 
 
 
 int main() {	
+
+	srand(time(0));
 
 	GraphicsEngine GraphicsEng ( { 700, 1000 } , 60);
 	 
@@ -46,14 +47,38 @@ int main() {
 
 	Level level;
 
-	Character playerCharacter(std::make_shared<std::unordered_map<std::string, std::shared_ptr<Texture2D>>>(loader.textureMap),
-		std::make_shared<Level>(level));
+	Level* levelPtr = &level;
+
+	Character playerCharacter(loader.textureMap, levelPtr);
 
 	//Texture2D texture = LoadTexture("resources/logo.png");
 
 	std::cout << "GRIOGJRWEOIGJERIOGJERIGOREJGOIERJGRWEOIGJREO"; // Haha getMonitorHeight returns only memory address <3 Fix in graphics.cpp
 
-	level.platforms.makeNewPlatform({ 100, 100 }, { 100, 200 });
+	float randomNumberX = rand() % 600;
+	float randomNumberY = rand() % 600;
+	
+	levelPtr->platforms.makeNewPlatform({ randomNumberX, randomNumberY }, {200, 50});
+
+	randomNumberX = rand() % 600;
+	randomNumberY = rand() % 600;
+
+	levelPtr->platforms.makeNewPlatform({ randomNumberX, randomNumberY }, { 200, 50 });
+
+	randomNumberX = rand() % 600;
+	randomNumberY = rand() % 600;
+
+	levelPtr->platforms.makeNewPlatform({ randomNumberX, randomNumberY }, { 200, 50 });
+	
+	randomNumberX = rand() % 600;
+	randomNumberY = rand() % 600;
+	
+	levelPtr->platforms.makeNewPlatform({ randomNumberX, randomNumberY }, { 200, 50 });
+
+	randomNumberX = rand() % 600;
+	randomNumberY = rand() % 600;
+
+	levelPtr->platforms.makeNewPlatform({ randomNumberX, randomNumberY }, { 200, 50 });
 
 	std::cout << "fwfqefqqwfqw";
 
@@ -63,7 +88,9 @@ int main() {
 
 		playerCharacter.update();
 		
-		level.update();
+		levelPtr->update();
+
+		//levelPtr->coordsToCheckCollision({ 100, 100 });
 
 		std::cout << "\n\n";
 

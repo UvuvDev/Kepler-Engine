@@ -6,7 +6,7 @@
 class Platforms : BaseClass {
 private:
 
-	std::vector<Rectangle> platformVector;
+	
 
 	Vector2 coords;
 	Vector2 movementVector;
@@ -17,6 +17,8 @@ private:
 	uint16_t defaultHeight;
 
 public: 
+
+	std::vector<Rectangle> platformVector;
 
 	Platforms::Platforms();
 
@@ -34,7 +36,9 @@ public:
 
 	void removePlatform(uint32_t index);
 
-	std::shared_ptr<std::vector<Rectangle>> getPlatformVector();
+	const std::vector<Rectangle>& getPlatformVector();
+
+	
 
 
 

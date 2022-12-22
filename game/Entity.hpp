@@ -6,7 +6,7 @@
 #include <string>
 #include "BaseClass.hpp"
 
-using HashmapShPtr = std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >>;
+using HashmapShPtr = std::unordered_map<std::string, std::shared_ptr<Texture2D> >;
 
 class Entity : BaseClass {
 protected:
@@ -73,15 +73,15 @@ public:
 
 	Entity();
 
-	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg);
+	Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg);
 
-	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg, 
+	Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg,
 		Color textureHue);
 
-	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg, 
+	Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg, 
 		Vector2 coordsArg);
 
-	Entity(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg, 
+	Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg, 
 		Color textureHue, Vector2 coordsArg);
 
 	/*=========================================================*/

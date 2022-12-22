@@ -29,7 +29,7 @@ Character::Character() {
 
 }
 
-Character::Character(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg) {
+Character::Character(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg) {
 
 	textureMap = textureMapArg; //= std::make_shared<Texture2D>( textureVector[0] );
 
@@ -50,8 +50,8 @@ Character::Character(std::shared_ptr <std::unordered_map<std::string, std::share
 
 }
 
-Character::Character(std::shared_ptr <std::unordered_map<std::string, std::shared_ptr<Texture2D> >> textureMapArg,
-	std::shared_ptr<Level> levelPtrArg) {
+Character::Character(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg,
+	Level* levelPtrArg) {
 
 	levelPtr = levelPtrArg;
 
@@ -71,6 +71,7 @@ Character::Character(std::shared_ptr <std::unordered_map<std::string, std::share
 
 	defaultCoords.x = 0;
 	defaultCoords.y = 0;
+
 }
 
 void Character::update() {
@@ -170,7 +171,7 @@ void Character::render() {
 
 	if (shouldRender) {
 
-		DrawTextureRec(*(*textureMap->find(textureName)).second, { animationHandler.getCurrentChunk().x,
+		DrawTextureRec(*(*textureMap.find(textureName)).second, { animationHandler.getCurrentChunk().x,
 
 			animationHandler.getCurrentChunk().y, (float)animationHandler.getPixelDensityPerChunk() * isFlipped,
 
@@ -253,7 +254,7 @@ bool Character::collisionCheck() {
 
 	collisionBoxesToCheck = levelPtr->coordsToCheckCollision({ 100, 100 });
 
-	std::cout << collisionBoxesToCheck.at(0).x;
+	std::cout << "\n\n\n\n" << levelPtr->coordsToCheckCollision({ 100, 100 }).size();
 
 	collisionBox.x = coords.x;
 	collisionBox.y = coords.y;
@@ -262,14 +263,16 @@ bool Character::collisionCheck() {
 	collisionBox.height = animationHandler.getPixelDensityPerChunk();
 
 	DrawRectangleLines(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height, RED);
-	DrawRectangleLines(debugBox.x, debugBox.y, debugBox.width, debugBox.height, BLUE);
+	//DrawRectangleLines(debugBox.x, debugBox.y, debugBox.width, debugBox.height, BLUE);
 
 	for (int i = 0; i < collisionBoxesToCheck.size(); i++) {
 
 		// if coords > 0 + width and < Screen width, collision check. else dont emplace back		
+		
+		//DrawTexture(*(*textureMap.find("Checkmark")).second, 500, 500, WHITE);
 
 		if (CheckCollisionRecs(collisionBox, collisionBoxesToCheck.at(i))) {
-			DrawTexture(*(*textureMap->find("Checkmark")).second, 150, 100, WHITE);
+			DrawTexture(*(*textureMap.find("Checkmark")).second, 150, 100, WHITE);
 			return true;
 		}
 
