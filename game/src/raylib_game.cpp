@@ -55,6 +55,8 @@ int main() {
 
 	level.platforms.makeNewPlatform({ 100, 100 }, { 100, 200 });
 
+	std::cout << "fwfqefqqwfqw";
+
 	while ( !WindowShouldClose() ) {
 
 		GraphicsEng.mainRenderLoop();

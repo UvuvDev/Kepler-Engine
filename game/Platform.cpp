@@ -58,8 +58,10 @@ void Platforms::makeNewPlatform(Vector2 location) {
 }
 
 void Platforms::makeNewPlatform(Vector2 location, Vector2 dimensions) {
+
+	std::cout << "NEW PLATFORM!!!!!!!!";
 	
-	Rectangle tempRec = { location.x, location.y, dimensions.x, dimensions.y };
+	Rectangle tempRec = { 100, 100, 100, 100 }; //  { location.x, location.y, dimensions.x, dimensions.y }
 
 	platformVector.emplace_back(tempRec);
 
@@ -67,7 +69,7 @@ void Platforms::makeNewPlatform(Vector2 location, Vector2 dimensions) {
 
 void Platforms::makeNewPlatform(Vector2 location, Vector2 dimensions, uint16_t amountToMake) {
 
-	for (uint16_t i = 0; i > amountToMake; i++) {
+	for (uint16_t i = 0; i < amountToMake; i++) {
 		
 		Rectangle tempRec = { location.x, location.y, dimensions.x, dimensions.y };
 
