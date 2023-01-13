@@ -21,7 +21,7 @@ Entity::Entity() {
 
 }
 
-Entity::Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg) {
+Entity::Entity(HashTextureMap textureMapArg) {
 
 	//textureVector.emplace_back( LoadTexture("resources/KeplerEngineLogo.png") );
 
@@ -40,7 +40,7 @@ Entity::Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > text
 
 }
 
-Entity::Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg,
+Entity::Entity(HashTextureMap textureMapArg,
 	Color textureHueArg) {
 
 	textureMap = textureMapArg;
@@ -57,7 +57,7 @@ Entity::Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > text
 	defaultCoords.y = 0;
 }
 
-Entity::Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg,
+Entity::Entity(HashTextureMap textureMapArg,
 	Vector2 coordsArg) {
 
 	textureMap = textureMapArg;
@@ -75,7 +75,7 @@ Entity::Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > text
 
 }
 
-Entity::Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg,
+Entity::Entity(HashTextureMap textureMapArg,
 	Color textureHueArg, Vector2 coordsArg) {
 
 	textureMap = textureMapArg;
@@ -100,7 +100,7 @@ Entity::Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > text
 void Entity::update() { // Put every function you need to update in here
 	
 	//DrawTexture(testTexture, coords.x, coords.y, WHITE);
-	DrawTexture( *(*textureMap.find("Entity")).second , coords.x, coords.y, WHITE);
+	DrawTexture(textureMap->find("Entity")->second, coords.x, coords.y, WHITE);
 
 }
 

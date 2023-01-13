@@ -1,8 +1,12 @@
 #pragma once
-#include "BaseClass.hpp"
+#include "Item.hpp"
 
-class Weapon : BaseClass {
+class Weapon : Item {
 private:
+
+	static constexpr float defaultDamage = 1000.f;
+	static constexpr float defaultRange = 1000.f;
+
 	float damage;
 	float range;
 

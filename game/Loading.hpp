@@ -26,9 +26,9 @@ public:
 
 	bool load();	
 
-	std::unordered_map<std::string, std::shared_ptr<Texture2D>> textureMap;
-	std::unordered_map<std::string, std::shared_ptr<Music>> musicMap;
-	std::unordered_map<std::string, std::shared_ptr<AudioCallback>> audioMap;
+	std::unordered_map<std::string, Texture2D> textureMap;
+	std::unordered_map<std::string, Music> musicMap;
+	std::unordered_map<std::string, AudioCallback> audioMap;
 
 
 };

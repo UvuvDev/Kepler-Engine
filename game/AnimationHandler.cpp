@@ -4,15 +4,16 @@
 
 AnimationHandlerClass::AnimationHandlerClass() {
 	
-	framesPerSecond = 1;
+	framesPerSecond = 2;
 	pixelDensityPerChunk = 64;
 	chunksPerSheet = { 4, 5 };
 	currentChunk = { 0, 0 };
 	directionsToFlow = { 0, 1 };
+	currentFrame = 1;
 
 	timeStuff = 0;
 
-	testTexturePtr = std::make_shared<Texture2D>(testTexture);
+	testTexture = LoadTexture("checkmark.png");
 
 	shouldUpdate = false;
 
@@ -23,7 +24,7 @@ AnimationHandlerClass::AnimationHandlerClass(std::string textureMapKeys) {
 
 	timeStuff = 0;
 
-	framesPerSecond = 12;
+	framesPerSecond = 2;
 	pixelDensityPerChunk = 64;
 	chunksPerSheet = { 4, 5 };
 	currentChunk = { 0, 0 };
@@ -33,7 +34,28 @@ AnimationHandlerClass::AnimationHandlerClass(std::string textureMapKeys) {
 
 }
 
-void AnimationHandlerClass::update() {		
+void AnimationHandlerClass::update() {
+
+	float currentTimeInMillis = std::round(GetTime()) - GetTime();
+
+	std::cout << "Current Anim Time:  " << currentTimeInMillis << "     ";
+	std::cout << "Current Frame Time:  " << ((1 / framesPerSecond) * currentFrame) << "     ";
+
+	if (currentTimeInMillis > ((1 / framesPerSecond) * currentFrame)) {
+		shouldUpdate = true;
+		currentFrame++;
+	}
+
+	else {
+		shouldUpdate = false;
+	}
+
+
+
+	if (currentFrame > framesPerSecond) {
+		currentFrame = 1;
+	}
+
 
 	if (shouldUpdate == true) {
 
@@ -50,28 +72,10 @@ void AnimationHandlerClass::update() {
 		else {
 			currentChunk.y += directionsToFlow.y * pixelDensityPerChunk;
 		}
+
 	}
 
-	/*std::cout << "\n\n" <<
-
-		"Current X Chunk: " << currentChunk.x <<
-		" Current Y Chunk: " << currentChunk.y << "\n\n";
-
-	std::cout << "\n\n" <<
-
-		"Amount of X Chunks: " << chunksPerSheet.y <<
-		" Amount of Y Chunks: " << chunksPerSheet.y << "\n\n"; */
-
-	if (std::round( GetTime() ) / framesPerSecond > GetTime() / framesPerSecond) {
-		shouldUpdate = true;
-		timeStuff = 0;
-	}
-
-	else {
-		timeStuff++;
-		shouldUpdate = false;
-	}
-
+	shouldUpdate = false;
 
 }
 

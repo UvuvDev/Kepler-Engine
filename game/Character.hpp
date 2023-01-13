@@ -5,7 +5,7 @@
 #include "AnimationHandler.hpp"
 #include "StateMachines.hpp"
 #include "Level.hpp"
-
+#include "Audio.hpp"
 
 class Character : Entity {
 private:
@@ -16,15 +16,26 @@ private:
 	CharacterStates characterStateMachine;
 	CollisionStates collisionState;
 
+	//AudioController audio;
+
 	Level* levelPtr;
 
-	void bottomFloor();
+	Rectangle collisionBoxTop;
+	Rectangle collisionBoxBottom;
+	Rectangle collisionBoxLeft;
+	Rectangle collisionBoxRight;
+	
+	bool isInAir = true;
 
-	float jumpEquation();
+	bool collisionBottom = false;
+
+	void bottomFloor();
 
 	float gravityEquation();
 
 	float G = 9.8;
+
+	float terminalVelocity = 15;
 
 	float inAirSpeed = 0.f;
 
@@ -32,7 +43,7 @@ private:
 
 	char* textureName = "Character";
 
-	Rectangle collisionBox;
+	Rectangle hitBox;
 
 	Rectangle debugBox = { 500, 500, 900, 900 };
 
@@ -48,13 +59,16 @@ private:
 
 	bool collisionCheck();
 
+	bool newCollision();
+
+
 public:
 
 	Character();
 
-	Character(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg);
+	Character(HashTextureMap textureMapArg);
 
-	Character::Character(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg,
+	Character::Character(HashTextureMap textureMapArg,
 		Level* levelPtrArg);
 
 	void update();

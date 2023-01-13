@@ -10,13 +10,15 @@
 class AnimationHandlerClass {
 private:
 
-	int framesPerSecond;
+	int framesPerSecond = 5;
 
 	int pixelDensityPerChunk;
 
 	bool shouldUpdate;
 
 	int timeStuff;
+
+	float currentFrame;
 
 	std::vector<std::shared_ptr<Texture2D>> textureVector;
 

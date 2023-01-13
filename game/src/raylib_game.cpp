@@ -49,16 +49,16 @@ int main() {
 
 	Level* levelPtr = &level;
 
-	Character playerCharacter(loader.textureMap, levelPtr);
+	Character playerCharacter(&loader.textureMap, levelPtr);
 
 	//Texture2D texture = LoadTexture("resources/logo.png");
 
 	std::cout << "GRIOGJRWEOIGJERIOGJERIGOREJGOIERJGRWEOIGJREO"; // Haha getMonitorHeight returns only memory address <3 Fix in graphics.cpp
 
 	float randomNumberX = rand() % 600;
-	float randomNumberY = rand() % 600;
+	float randomNumberY = 900;
 	
-	levelPtr->platforms.makeNewPlatform({ randomNumberX, randomNumberY }, {200, 50});
+	levelPtr->platforms.makeNewPlatform({ 200, 800 }, {200, 150});
 
 	randomNumberX = rand() % 600;
 	randomNumberY = rand() % 600;

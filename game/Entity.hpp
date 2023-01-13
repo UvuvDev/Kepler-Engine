@@ -6,7 +6,7 @@
 #include <string>
 #include "BaseClass.hpp"
 
-using HashmapShPtr = std::unordered_map<std::string, std::shared_ptr<Texture2D> >;
+using HashTextureMap = std::unordered_map<std::string, Texture2D >*;
 
 class Entity : BaseClass {
 protected:
@@ -17,7 +17,7 @@ protected:
 
 	Texture2D testTexture = LoadTexture("resources/testspritesheet.png");
 
-	HashmapShPtr textureMap;
+	HashTextureMap textureMap;
 	std::unordered_map<std::string, std::shared_ptr<AudioCallback>> audioMap;
 
 	Color textureHue;
@@ -73,15 +73,15 @@ public:
 
 	Entity();
 
-	Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg);
+	Entity(HashTextureMap textureMapArg);
 
-	Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg,
+	Entity(HashTextureMap textureMapArg,
 		Color textureHue);
 
-	Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg, 
+	Entity(HashTextureMap textureMapArg,
 		Vector2 coordsArg);
 
-	Entity(std::unordered_map<std::string, std::shared_ptr<Texture2D> > textureMapArg, 
+	Entity(HashTextureMap textureMapArg,
 		Color textureHue, Vector2 coordsArg);
 
 	/*=========================================================*/
