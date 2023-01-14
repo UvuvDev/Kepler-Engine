@@ -43,8 +43,8 @@ protected:
 
 	// Key Characteristics
 
-	static constexpr uint16_t defaultHealth = 100;
-	static constexpr uint16_t defaultDamage = 100;
+	static constexpr uint16_t defaultHealth = 3;
+	static constexpr uint16_t defaultDamage = 1;
 
 	double health;
 	double damage;	

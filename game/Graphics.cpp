@@ -61,7 +61,7 @@ bool GraphicsEngine::mainRenderLoop() {
 		DrawFPS(50, 50);
 	}
 	
-	makeButton(500, 500);
+	//makeButton(500, 500);
 
 	EndDrawing();
 

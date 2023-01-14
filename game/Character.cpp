@@ -164,7 +164,10 @@ void Character::render() {
 			(float)animationHandler.getPixelDensityPerChunk() }, { coords.x, coords.y }, textureHue);
 
 	}
+
 	
+
+	renderUIOverlay();
 
 }
 
@@ -196,14 +199,16 @@ void Character::movingCheck() {
 	if (IsKeyDown(KEY_LEFT)) {
 		movementVector.x = -5;
 		flipSpriteReverse();
+		animationHandler.unfreezeFrame();
 	}
 	else if (IsKeyDown(KEY_RIGHT)) {
 		movementVector.x = 5;
 		flipSpriteForward();
+		animationHandler.unfreezeFrame();
 	}
 	else {
 		movementVector.x = 0;
-		animationHandler.freezeFrame();
+		animationHandler.freezeFrame({4, 5});
 	}
 
 
@@ -543,4 +548,35 @@ bool Character::collisionCheck() {
 	}
 
 	return true;
+}
+
+void Character::renderUIOverlay() {
+
+	DrawRectangleRounded({ 765, 550, 180, 64 }, .5, 1, RED);
+
+	if (health == 3) {
+		UIHandler.renderHealthHearts({ 780, 550 }, true);
+		UIHandler.renderHealthHearts({ 840, 550 }, true);
+		UIHandler.renderHealthHearts({ 900, 550 }, true);
+	}
+
+	else if (health == 2) {
+		UIHandler.renderHealthHearts({ 780, 550 }, true);
+		UIHandler.renderHealthHearts({ 840, 550 }, true);
+		UIHandler.renderHealthHearts({ 900, 550 }, false);
+	}
+	
+	else if (health == 1) {
+		UIHandler.renderHealthHearts({ 780, 550 }, true);
+		UIHandler.renderHealthHearts({ 840, 550 }, false);
+		UIHandler.renderHealthHearts({ 900, 550 }, false);
+	}
+
+	else if (health == 0) {
+		UIHandler.renderHealthHearts({ 780, 550 }, false);
+		UIHandler.renderHealthHearts({ 840, 550 }, false);
+		UIHandler.renderHealthHearts({ 900, 550 }, false);
+	}
+
+	
 }

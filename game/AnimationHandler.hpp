@@ -10,13 +10,17 @@
 class AnimationHandlerClass {
 private:
 
-	int framesPerSecond = 5;
+	static constexpr int defaultFPS = 10;
+
+	double framesPerSecond = 5;
 
 	int pixelDensityPerChunk;
 
 	bool shouldUpdate;
 
-	int timeStuff;
+	bool isFrozen = false;
+
+	float timeSinceLastUpdate;
 
 	float currentFrame;
 
@@ -45,6 +49,8 @@ public:
 	void freezeFrame();
 
 	void freezeFrame(Vector2 frameToFreezeOn);
+
+	void unfreezeFrame();
 
 	Vector2 spriteToUse();
 

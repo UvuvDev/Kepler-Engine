@@ -6,12 +6,15 @@
 #include "StateMachines.hpp"
 #include "Level.hpp"
 #include "Audio.hpp"
+#include "UI.hpp"
 
 class Character : Entity {
 private:
 
 	InputHandlerClass inputHandler;
 	AnimationHandlerClass animationHandler;
+	UI UIHandler;
+
 
 	CharacterStates characterStateMachine;
 	CollisionStates collisionState;
@@ -60,6 +63,8 @@ private:
 	bool collisionCheck();
 
 	bool newCollision();
+
+	void renderUIOverlay();
 
 
 public:

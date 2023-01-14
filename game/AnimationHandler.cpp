@@ -4,14 +4,12 @@
 
 AnimationHandlerClass::AnimationHandlerClass() {
 	
-	framesPerSecond = 2;
+	framesPerSecond = defaultFPS;
 	pixelDensityPerChunk = 64;
 	chunksPerSheet = { 4, 5 };
 	currentChunk = { 0, 0 };
 	directionsToFlow = { 0, 1 };
-	currentFrame = 1;
-
-	timeStuff = 0;
+	currentFrame = std::floor(GetTime());
 
 	testTexture = LoadTexture("checkmark.png");
 
@@ -22,13 +20,14 @@ AnimationHandlerClass::AnimationHandlerClass() {
 
 AnimationHandlerClass::AnimationHandlerClass(std::string textureMapKeys) {
 
-	timeStuff = 0;
+	framesPerSecond = defaultFPS;
 
-	framesPerSecond = 2;
 	pixelDensityPerChunk = 64;
 	chunksPerSheet = { 4, 5 };
 	currentChunk = { 0, 0 };
 	directionsToFlow = { 0, 1 };
+
+	currentFrame = 1;
 
 	shouldUpdate = false;
 
@@ -36,13 +35,18 @@ AnimationHandlerClass::AnimationHandlerClass(std::string textureMapKeys) {
 
 void AnimationHandlerClass::update() {
 
-	float currentTimeInMillis = std::round(GetTime()) - GetTime();
+	/*
+	framesPerSecond = 2;
+
+	currentTimeInMillis = GetTime() - std::floor(GetTime());
 
 	std::cout << "Current Anim Time:  " << currentTimeInMillis << "     ";
 	std::cout << "Current Frame Time:  " << ((1 / framesPerSecond) * currentFrame) << "     ";
 
-	if (currentTimeInMillis > ((1 / framesPerSecond) * currentFrame)) {
+	if (currentTimeInMillis > ((1 / framesPerSecond)) * currentFrame) {
 		shouldUpdate = true;
+
+		std::cout << "\n\n EIFHWIOFJOIEOFWQJIFQOIFWEQF";
 		currentFrame++;
 	}
 
@@ -50,14 +54,32 @@ void AnimationHandlerClass::update() {
 		shouldUpdate = false;
 	}
 
+	std::cout << "   Current Frame:   " << currentFrame << "   ";
+	std::cout << "   FPS:   " << framesPerSecond << "   ";
 
-
-	if (currentFrame > framesPerSecond) {
+	if (currentFrame >= framesPerSecond) {
 		currentFrame = 1;
+	}
+	else {
+		//currentFrame = 1;
+	}
+	
+	*/
+
+
+	std::cout << "Current Frame Time:  " << ((1 / framesPerSecond) * currentFrame) << "     ";
+
+
+	if (GetTime() > currentFrame / framesPerSecond) {
+		currentFrame++;
+		shouldUpdate = true;
+	}
+	else {
+		shouldUpdate = false;
 	}
 
 
-	if (shouldUpdate == true) {
+	if (shouldUpdate == true && !isFrozen) {
 
 		if (currentChunk.x > chunksPerSheet.x * pixelDensityPerChunk) {
 			currentChunk.x = 0.f;
@@ -96,16 +118,17 @@ int AnimationHandlerClass::getPixelDensityPerChunk() {
 }
 
 void AnimationHandlerClass::freezeFrame() {
-	timeStuff = 29;
-	shouldUpdate = false;
+	isFrozen = true;
 }
 
 void AnimationHandlerClass::freezeFrame(Vector2 frameToFreezeOn) {
-	timeStuff = 29;
-	shouldUpdate = false;
-
+	isFrozen = true;
 	currentChunk = frameToFreezeOn;
 
+}
+
+void AnimationHandlerClass::unfreezeFrame() {
+	isFrozen = false;
 }
 
 void AnimationHandlerClass::setCurrentChunk(Vector2 newChunkArg) {
