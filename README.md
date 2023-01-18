@@ -12,6 +12,7 @@ An engine for making games. For now, 2D only, but future versions will support 3
 - A custom loader to load all game resources before start up (not necessary)
 - Procedural Generation
 - UI Elements 
+- Networking using ASIO (being developed)
 
 ## Important notes
 
