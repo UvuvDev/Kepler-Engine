@@ -71,7 +71,7 @@ bool GraphicsEngine::mainRenderLoop() {
 
 bool GraphicsEngine::deleteWindow() {
 
-	CloseWindow();
+	RayCloseWindow();
 
 	return true;
 

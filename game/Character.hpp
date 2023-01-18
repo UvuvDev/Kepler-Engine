@@ -8,7 +8,7 @@
 #include "Audio.hpp"
 #include "UI.hpp"
 
-class Character : Entity {
+class Character : public Entity {
 private:
 
 	InputHandlerClass inputHandler;

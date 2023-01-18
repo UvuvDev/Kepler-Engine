@@ -5,11 +5,43 @@
 #include <unordered_map>
 #include <string>
 #include "BaseClass.hpp"
+#include "AnimationHandler.hpp"
+#include "StateMachines.hpp"
+#include "Level.hpp"
+#include "Audio.hpp"
 
 using HashTextureMap = std::unordered_map<std::string, Texture2D >*;
 
 class Entity : BaseClass {
 protected:
+
+	AnimationHandlerClass animationHandler;
+	CollisionStates collisionState;
+
+	//AudioController audio;
+
+	Level* levelPtr;
+
+	Rectangle collisionBoxTop;
+	Rectangle collisionBoxBottom;
+	Rectangle collisionBoxLeft;
+	Rectangle collisionBoxRight;
+
+	bool collisionBottom = false;
+
+	float G = 9.8;
+
+	float terminalVelocity = 15;
+
+	float inAirSpeed = 0.f;
+
+	bool isJumping = false;
+
+	char* textureName = "Entity";
+
+	Rectangle hitBox;
+
+	Rectangle debugBox = { 500, 500, 900, 900 };
 
 	/*=========================================================*/
 
@@ -96,6 +128,8 @@ public:
 
 	// Class Functions
 
+protected:
+
 	void setMovement(Vector2 moveVectorArg); // Sets Movement.
 
 	void setHealth(double healthArg); // Sets Health.
@@ -105,6 +139,20 @@ public:
 	void setDamage(double damageArg); // Sets Damage.
 
 	double getDamage(); // Gets Damage.
+
+	void gravity();
+
+	float gravityEquation();
+
+	void bottomFloor();
+
+	void updateTimes();
+
+	void movingCheck();
+	
+	bool collisionCheck();
+
+	void render();
 
 	/*=========================================================*/
 

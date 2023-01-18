@@ -12,6 +12,9 @@
 *
 ********************************************************************************************/
 
+
+
+
 #include "raylib.h"
 #include "Graphics.hpp"
 #include "BaseClass.hpp"
@@ -23,10 +26,13 @@
 #include "Character.hpp"
 #include "Platform.hpp"
 
+#include "Networking.hpp"
+
+
+
 #include <memory>
 #include <iostream>
 #include <random>
-
 
 
 int main() {	
