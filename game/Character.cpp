@@ -31,6 +31,9 @@ Character::Character() {
 	collisionBoxLeft = { coords.x, coords.y };
 	collisionBoxRight = { coords.x, coords.y };
 
+	sword.setSocket(&weaponSocket);
+
+
 }
 
 Character::Character(HashTextureMap textureMapArg) {
@@ -51,6 +54,8 @@ Character::Character(HashTextureMap textureMapArg) {
 
 	defaultCoords.x = 0;
 	defaultCoords.y = 0;
+
+	sword.setSocket(&weaponSocket);
 
 }
 
@@ -75,6 +80,8 @@ Character::Character(HashTextureMap textureMapArg,
 
 	defaultCoords.x = 0;
 	defaultCoords.y = 0;
+
+	sword.setSocket(&weaponSocket);
 
 }
 
@@ -124,11 +131,27 @@ void Character::update() {
 
 	/*=======================================*/
 
+	// Weapon Socket Set Cords
+
+	Vector2 socketCoords;
+
+	if (weaponSocket.isFlipped) {
+		socketCoords = { coords.x - 30, coords.y - 30 };
+	}
+	else {
+		socketCoords = { coords.x + 30 , 
+			coords.y - 30 };
+	}
+
+	weaponSocket.coords = &socketCoords;
+
+	/*=======================================*/
+
 	render();
 	
 	/*=======================================*/
 
-
+	sword.update();
 
 	//DrawTextureRec(animationHandler.testTexture, { 128, 128,
 	//	64, 64 }, { coords.x, coords.y }, WHITE);
@@ -200,11 +223,13 @@ void Character::movingCheck() {
 		movementVector.x = -5;
 		flipSpriteReverse();
 		animationHandler.unfreezeFrame();
+		weaponSocket.isFlipped = true;
 	}
 	else if (IsKeyDown(KEY_RIGHT)) {
 		movementVector.x = 5;
 		flipSpriteForward();
 		animationHandler.unfreezeFrame();
+		weaponSocket.isFlipped = false;
 	}
 	else {
 		movementVector.x = 0;

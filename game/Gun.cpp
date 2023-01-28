@@ -4,21 +4,32 @@ void updateTimes();
 
 Gun::Gun() {
 
+	magCount = defaultMagCount;
+
+	ammoCount = defaultAmmoCount;
+	reloadTime = defaultReloadTime;
+	shootingSpeed = defaultShootingSpeed;
+
+	for (int i = 0; i > magCount; i++) {
+		//bulletVector.emplace_back(new Bullet({ -100, -100 }, LoadTexture("resources/keplerenginelogo.png")));
+	}
+
+
+
 }
 
-void Gun::setPos(Vector2 pos) {
-	
-}
+Gun::~Gun() {
 
-void Gun::setPosToSocket(Vector2 pos, Vector2 socketPos) {
+	for (int i = 0; i > magCount; i++) {
+		bulletVector.clear();
+	}
 
-}
-
-void Gun::setSocketCoords(Vector2 coords) {
-	socketCoords = coords;
 }
 
 void Gun::shoot() {
+
+	bulletVector[magCount - ammoCount];
+
 
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "raylib.h"
 #include "Entity.hpp"
 #include "InputHandler.hpp"
 #include "AnimationHandler.hpp"
@@ -7,6 +8,7 @@
 #include "Level.hpp"
 #include "Audio.hpp"
 #include "UI.hpp"
+#include "Weapon.hpp"
 
 class Character : public Entity {
 private:
@@ -14,6 +16,10 @@ private:
 	InputHandlerClass inputHandler;
 	AnimationHandlerClass animationHandler;
 	UI UIHandler;
+
+	KeplerSocket weaponSocket;
+
+	Weapon sword;
 
 
 	CharacterStates characterStateMachine;

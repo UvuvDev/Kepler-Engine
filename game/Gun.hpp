@@ -1,16 +1,19 @@
 #pragma once
 
 #include "Weapon.hpp"
+#include "Bullet.hpp"
 
-class Gun : Weapon {
+class Gun : public Weapon {
 private:
 
-	Texture2D GunTexture;
-	Color colorHue;
+	static constexpr int defaultAmmoCount = 10;
+	static constexpr int defaultMagCount = 10;
+	static constexpr int defaultReloadTime = 2;
+	static constexpr int defaultShootingSpeed = .5;
 
 	int ammoCount;
-	int defaultAmmoCount;
-
+	int magCount;
+	
 	float reloadTime;
 	float shootingSpeed;
 
@@ -20,13 +23,17 @@ private:
 	bool isShooting;
 	bool isReloading;
 
-	Vector2 socketCoords;
-
 	void updateTimes();
+
+	std::vector<Bullet> bulletVector;
 
 public:
 
 	Gun();
+
+	Gun(int defaultAmmoCountArg, int magCountArg, float reloadTimeArg, float shootingSpeedArg);
+
+	~Gun();
 
 	void setPos(Vector2 pos);
 	
