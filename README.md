@@ -23,8 +23,6 @@ An engine for making games. For now, 2D only, but future versions will support 3
 
 1. Uses Raylib. Get it however you wish, though a solution file is included for raylib as well. You may need to do some extra things to get it running. 
 
-2. Whenever you make new files, you MUST run the premake.exe file. It is **required** for it to compile. This is due to the way the project is set up, it allows for a quicker start (no linking) but it makes it annoying to do anything. 
-
 ## Steps to start out
 
 1. Clone repo.
