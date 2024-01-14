@@ -1,4 +1,4 @@
-#include "BaseClass.hpp"
+#include "include/BaseClass.hpp"
 
 
 bool updateAllClasses() {

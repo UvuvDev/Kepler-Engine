@@ -1,4 +1,4 @@
-#include "Character.hpp"
+#include "include/Character.hpp"
 #include <iostream>
 #include <algorithm>
 
@@ -31,7 +31,8 @@ Character::Character() {
 	collisionBoxLeft = { coords.x, coords.y };
 	collisionBoxRight = { coords.x, coords.y };
 
-	sword.setSocket(&weaponSocket);
+    inventory.emplace_back(new ElementalSword(Element::fire, 10));
+    inventory.at(0)->setSocket(&weaponSocket);
 
 
 }
@@ -55,7 +56,8 @@ Character::Character(HashTextureMap textureMapArg) {
 	defaultCoords.x = 0;
 	defaultCoords.y = 0;
 
-	sword.setSocket(&weaponSocket);
+    inventory.emplace_back(new ElementalSword(Element::fire, 10));
+    inventory.at(0)->setSocket(&weaponSocket);
 
 }
 
@@ -81,7 +83,8 @@ Character::Character(HashTextureMap textureMapArg,
 	defaultCoords.x = 0;
 	defaultCoords.y = 0;
 
-	sword.setSocket(&weaponSocket);
+    inventory.emplace_back(new ElementalSword(Element::fire, 10));
+    inventory.at(0)->setSocket(&weaponSocket);
 
 }
 
@@ -151,7 +154,13 @@ void Character::update() {
 	
 	/*=======================================*/
 
-	sword.update();
+    std::cout << "I. Size: " << inventory.size();
+
+    for (int i = 0; i > inventory.size(); i++) {
+        std::cout << "Inventory update: " << i << std::endl;
+        inventory.at(i)->update();
+    }
+
 
 	//DrawTextureRec(animationHandler.testTexture, { 128, 128,
 	//	64, 64 }, { coords.x, coords.y }, WHITE);

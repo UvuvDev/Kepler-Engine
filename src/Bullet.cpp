@@ -1,4 +1,4 @@
-#include "Bullet.hpp"
+#include "include/Bullet.hpp"
 
 Bullet::Bullet(Vector2 coordsArg, Texture2D textureArg) {
 	coords = coordsArg;

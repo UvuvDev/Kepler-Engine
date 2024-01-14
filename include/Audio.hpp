@@ -1,6 +1,6 @@
 #pragma once
 
-#include "raylib.h"
+#include "raylib-include/raylib.h"
 #include <vector>
 
 class AudioController {

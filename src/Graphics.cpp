@@ -1,9 +1,9 @@
 
-#include "Graphics.hpp"
-#include "GUIConfig.hpp"
-#include "raylib.h"
+#include "include/Graphics.hpp"
+#include "include/GUIConfig.hpp"
+#include "include/raylib-include/raylib.h"
 #define RAYGUI_IMPLEMENTATION 
-#include "raygui.h"
+#include "include/raylib-include/raygui.h"
 #undef RAYGUI_IMPLEMENTATION
 
 

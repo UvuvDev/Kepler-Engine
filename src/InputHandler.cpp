@@ -1,5 +1,5 @@
 
-#include "InputHandler.hpp"
+#include "include/InputHandler.hpp"
 
 InputHandlerClass::InputHandlerClass() {
 	mousePos = GetMousePosition();

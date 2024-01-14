@@ -1,4 +1,4 @@
-#include "Weapon.hpp"
+#include "include/Weapon.hpp"
 
 Weapon::Weapon() {
 
@@ -61,7 +61,7 @@ Weapon::Weapon(float damageArg, float rangeArg, KeplerSocket* socketArg) {
 	socket->isFlipped = false;
 
 }
-
+/*
 void Weapon::setPos(Vector2 pos) {
 	isLockedToSocket = false;
 	coords = pos;
@@ -93,4 +93,4 @@ void Weapon::update() {
 
 void Weapon::reset() {
 
-}
+} */

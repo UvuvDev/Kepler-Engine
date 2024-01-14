@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <iostream>
 #include <utility>
-#include "raylib.h"
+#include "raylib-include/raylib.h"
 
 class GraphicsEngine {
 private:

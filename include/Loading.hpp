@@ -5,8 +5,8 @@
 #include <string>
 #include <memory>
 
-#include "raylib.h"
-#include "raygui.h"
+#include "raylib-include/raylib.h"
+#include "raylib-include/raygui.h"
 
 
 class BaseLoader {

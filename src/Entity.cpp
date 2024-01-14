@@ -1,8 +1,8 @@
-#include "Entity.hpp"
-#include "AnimationHandler.hpp"
-#include "StateMachines.hpp"
-#include "Level.hpp"
-#include "Audio.hpp"
+#include "include/Entity.hpp"
+#include "include/AnimationHandler.hpp"
+#include "include/StateMachines.hpp"
+#include "include/Level.hpp"
+#include "include/Audio.hpp"
 
 /*=========================================================*/
 

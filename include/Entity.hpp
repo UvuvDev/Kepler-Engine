@@ -1,6 +1,6 @@
 #pragma once
 #include <stdint.h>
-#include "raylib.h"
+#include "raylib-include/raylib.h"
 #include <memory>
 #include <unordered_map>
 #include <string>
@@ -9,6 +9,7 @@
 #include "StateMachines.hpp"
 #include "Level.hpp"
 #include "Audio.hpp"
+
 
 using HashTextureMap = std::unordered_map<std::string, Texture2D >*;
 
@@ -37,7 +38,7 @@ protected:
 
 	bool isJumping = false;
 
-	char* textureName = "Entity";
+	std::string textureName = "Entity";
 
 	Rectangle hitBox;
 
@@ -161,4 +162,5 @@ protected:
 	void flipSpriteReverse();
 
 };
+
 

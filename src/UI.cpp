@@ -1,10 +1,10 @@
-#include "UI.hpp"
+#include "include/UI.hpp"
 
 
 UI::UI() {
 	HealthHearts = LoadTexture("resources/Hearts.png");
-	Map = LoadTexture("resources/bruh");
-	Powerup = LoadTexture("resources/bruh");
+	//Map = LoadTexture("resources/bruh");
+	//Powerup = LoadTexture("resources/bruh");
 
 }
 

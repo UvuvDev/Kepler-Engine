@@ -1,6 +1,6 @@
 #pragma once
 
-#include "raylib.h"
+#include "raylib-include/raylib.h"
 #include "Entity.hpp"
 #include "InputHandler.hpp"
 #include "AnimationHandler.hpp"
@@ -8,7 +8,7 @@
 #include "Level.hpp"
 #include "Audio.hpp"
 #include "UI.hpp"
-#include "Weapon.hpp"
+#include "non-library-includes/ElementalSword.hpp"
 
 class Character : public Entity {
 private:
@@ -19,8 +19,8 @@ private:
 
 	KeplerSocket weaponSocket;
 
-	Weapon sword;
-
+	std::vector<Item*> inventory;
+    Item* itemInHand;
 
 	CharacterStates characterStateMachine;
 	CollisionStates collisionState;

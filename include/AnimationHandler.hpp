@@ -1,12 +1,13 @@
 #pragma once
 
+#include <stdint.h>
 #include <cmath>
 #include <memory>
 #include <unordered_map>
 #include <string>
 #include <vector>
 
-#include "raylib.h"
+#include "raylib-include/raylib.h"
 
 class AnimationHandlerClass {
 private:

@@ -55,6 +55,8 @@ public:
 
 	void reset();
 
+    virtual bool getIfGravity() = 0;
+
 	
 
 

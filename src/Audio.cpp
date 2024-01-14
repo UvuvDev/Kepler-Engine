@@ -1,4 +1,4 @@
-#include "Audio.hpp"
+#include "include/Audio.hpp"
 
 AudioController::AudioController() {
 	InitAudioDevice();

@@ -1,54 +1,42 @@
-cmake_minimum_required(VERSION 3.11) # FetchContent is available in 3.11+
+cmake_minimum_required(VERSION 3.26)
 project(KeplerEngine)
 
-#
-file (GLOB_RECURSE KeplerEngine_SOURCES CONFIGURE_DEPENDS "src/*.cpp")
+set(CMAKE_CXX_STANDARD 20)
 
-# Generate compile_commands.json
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-# Dependencies
-set(RAYLIB_VERSION 5.0)
-find_package(raylib ${RAYLIB_VERSION} QUIET) # QUIET or REQUIRED
-if (NOT raylib_FOUND) # If there's none, fetch and build raylib
-    include(FetchContent)
-    FetchContent_Declare(
-            raylib
-            DOWNLOAD_EXTRACT_TIMESTAMP OFF
-            URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
-    )
-    FetchContent_GetProperties(raylib)
-    if (NOT raylib_POPULATED) # Have we downloaded raylib yet?
-        set(FETCHCONTENT_QUIET NO)
-        FetchContent_Populate(raylib)
-        set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE) # don't build the supplied examples
-        add_subdirectory(${raylib_SOURCE_DIR} ${raylib_BINARY_DIR})
-    endif()
-endif()
-
-# Our Project
-
-add_executable(${PROJECT_NAME}
-       main.cpp
-       ${KeplerEngine_SOURCES}
-
+include_directories(${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/resources
 )
-target_include_directories(${PROJECT_NAME}
-        PUBLIC
-        C:/Users/manny/CLionProjects/UnitTestsLemLib/include )
-#set(raylib_VERBOSE 1)
-target_link_libraries(${PROJECT_NAME} raylib)
-target_link_libraries(${PROJECT_NAME} raylib)
+link_directories(${CMAKE_SOURCE_DIR}/library)
 
-# Web Configurations
-if (${PLATFORM} STREQUAL "Web")
-    # Tell Emscripten to build an example.html file.
-    set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
-endif()
+ADD_LIBRARY(Raylib
+        library/junksrc.cpp
+)
 
-# Checks if OSX and links appropriate frameworks (Only required on MacOS)
-if (APPLE)
-    target_link_libraries(${PROJECT_NAME} "-framework IOKit")
-    target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
-    target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
-endif()
+target_link_libraries(Raylib -LRaylib)
+target_link_libraries(Raylib libraylib.a
+    winMM.Lib)
+
+add_executable(KeplerEngine main.cpp
+        AnimationHandler.cpp
+        BaseClass.cpp
+        Audio.cpp
+        Bullet.cpp
+        Character.cpp
+        Entity.cpp
+        Graphics.cpp
+        Gun.cpp
+        InputHandler.cpp
+        Item.cpp
+        Level.cpp
+        Loader.cpp
+        Platform.cpp
+        UI.cpp
+        Weapon.cpp
+        library/junksrc.cpp
+        include/non-library-includes/Sword.hpp
+        non-library-sources/Sword.cpp
+        include/non-library-includes/ElementalSword.hpp
+        non-library-sources/ElementalSword.cpp)
+
+
+target_link_libraries(KeplerEngine Raylib) # libbar.so is found in ${CMAKE_SOURCE_DIR}/lib

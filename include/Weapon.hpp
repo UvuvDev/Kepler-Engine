@@ -1,8 +1,9 @@
 #pragma once
+#include <string>
 #include "Item.hpp"
 #include "Socket.h"
 
-class Weapon : Item {
+class Weapon : public Item {
 protected:
 
 	Texture2D texture;
@@ -16,8 +17,6 @@ protected:
 
 	Vector2 coords;
 
-	KeplerSocket* socket;
-
 	bool isLockedToSocket;
 
 	Rectangle collisionBox;
@@ -30,15 +29,17 @@ public:
 
 	Weapon(float damageArg, float rangeArg, KeplerSocket* socketArg);
 
-	void setPos(Vector2 pos);
+	virtual void setPos(Vector2 pos) = 0;
 
-	void setSocket(KeplerSocket* socketArg);
+    virtual void setSocket(KeplerSocket* socketArg) = 0;
 
-	void update();
+    virtual void update() = 0;
 
-	void reset();
+    virtual void reset() = 0;
 
-	void attack(int* health);
+    virtual void attack(int* health) = 0;
+
+    virtual bool getIfGravity() = 0;
 
 
 

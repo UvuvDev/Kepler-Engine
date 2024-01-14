@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseClass.hpp"
-#include "raylib.h"
+#include "raylib-include/raylib.h"
 #include <memory>
 
 class Platforms : BaseClass {

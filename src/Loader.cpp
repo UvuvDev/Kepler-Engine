@@ -1,5 +1,5 @@
-#include "Loading.hpp"
-#include "Entity.hpp"
+#include "include/Loading.hpp"
+#include "include/Entity.hpp"
 
 
 bool Loader::load() {

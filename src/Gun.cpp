@@ -1,4 +1,4 @@
-#include "Gun.hpp"
+#include "include/Gun.hpp"
 
 void updateTimes();
 
@@ -18,6 +18,13 @@ Gun::Gun() {
 
 }
 
+Gun::Gun(int defaultAmmoCountArg, int magCountArg, float reloadTimeArg, float shootingSpeedArg) {
+    ammoCount = defaultAmmoCountArg;
+    magCount = magCountArg;
+    reloadTime = reloadTimeArg;
+    shootingSpeed = shootingSpeedArg;
+}
+
 Gun::~Gun() {
 
 	for (int i = 0; i > magCount; i++) {
@@ -26,10 +33,26 @@ Gun::~Gun() {
 
 }
 
+void Gun::setPos(Vector2 pos) {
+
+}
+
+void Gun::setPosToSocket(Vector2 pos, Vector2 socketPos) {
+
+}
+
+void Gun::setSocketCoords(Vector2 coords) {
+
+}
+
 void Gun::shoot() {
 
 	bulletVector[magCount - ammoCount];
 
+
+}
+
+void Gun::updateTimes() {
 
 }
 
@@ -55,4 +78,8 @@ void Gun::update() {
 
 void Gun::reset() {
 
+}
+
+bool Gun::getIfGravity() {
+    return isAffectedByGravity;
 }
